@@ -1,0 +1,533 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import {
+  Waves, ArrowRight, Shield, Zap, TrendingUp, CreditCard,
+  BarChart3, ChevronRight, Star, CheckCircle2,
+  Send, PiggyBank, Receipt, Menu, X
+} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import FlipCard from '@/components/FlipCard'
+import imgBancoDigital from '@/assets/jg10aZ8B-banco-digital_adobe-768x432.webp'
+import imgPessoa from '@/assets/pexels-photo-6969809.webp'
+import imgPagandoCartao from '@/assets/side-view-adult-paying-with-card_23-2150347020.avif'
+
+const features = [
+  { icon: Send, title: 'Pix Instantâneo', desc: 'Envie e receba dinheiro em segundos, qualquer dia e horário.' },
+  { icon: BarChart3, title: 'Extrato inteligente', desc: 'Visualize todas as suas movimentações com categorias automáticas.' },
+  { icon: Shield, title: 'Segurança total', desc: 'Criptografia de ponta a ponta e autenticação em dois fatores.' },
+  { icon: PiggyBank, title: 'Rendimento diário', desc: 'Seu saldo rende automaticamente todo dia, sem precisar investir.' },
+  { icon: CreditCard, title: 'Cartão virtual', desc: 'Gere cartões virtuais para compras online com limite personalizado.' },
+  { icon: Receipt, title: 'Pagamentos', desc: 'Pague boletos, contas e recargas direto pelo app, 24h por dia.' },
+]
+
+const stats = [
+  { value: '2M+', label: 'Clientes ativos' },
+  { value: 'R$ 4bi', label: 'Transacionados' },
+  { value: '4.9★', label: 'Avaliação no app' },
+  { value: '24/7', label: 'Suporte disponível' },
+]
+
+const testimonials = [
+  { name: 'Ana Lima', role: 'Freelancer', text: 'Finalmente um banco que entende minha rotina. Transferências instantâneas e sem burocracia.', stars: 5 },
+  { name: 'Carlos Mendes', role: 'Empreendedor', text: 'O extrato inteligente me ajudou a entender onde eu gastava dinheiro sem perceber.', stars: 5 },
+  { name: 'Juliana Costa', role: 'CLT', text: 'Meu salário cai e já rende no mesmo dia. Nunca mais deixei dinheiro parado.', stars: 5 },
+]
+
+export default function LandingPage() {
+  const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  return (
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
+
+      {/* NAV */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/80 backdrop-blur-lg border-b border-slate-800/50">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 group cursor-pointer" onClick={() => navigate('/')}>
+            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200 group-hover:scale-105 transition-transform">
+              <Waves className="w-5 h-5 text-white" />
+            </div>
+            <span className="font-bold text-xl text-white tracking-tight">Onda Finance</span>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-300">
+            <a href="#features" className="hover:text-white transition-colors">Funcionalidades</a>
+            <a href="#stats" className="hover:text-white transition-colors">Sobre</a>
+            <a href="#testimonials" className="hover:text-white transition-colors">Depoimentos</a>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <Button
+              onClick={() => navigate('/login')}
+              className="hidden sm:flex bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl px-6 h-10 text-sm font-semibold shadow-md shadow-indigo-100"
+            >
+              Entrar
+            </Button>
+            
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="md:hidden p-2 text-white hover:bg-slate-800 rounded-lg transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-[#020617] border-b border-slate-800 py-6 px-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300">
+            <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-slate-300 font-medium hover:text-white transition-colors">Funcionalidades</a>
+            <a href="#stats" onClick={() => setIsMenuOpen(false)} className="block text-slate-300 font-medium hover:text-white transition-colors">Sobre</a>
+            <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-slate-300 font-medium hover:text-white transition-colors">Depoimentos</a>
+            <Button
+              onClick={() => { setIsMenuOpen(false); navigate('/login'); }}
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl h-12 font-bold shadow-lg shadow-indigo-900/40"
+            >
+              Entrar na conta
+            </Button>
+          </div>
+        )}
+      </nav>
+
+      {/* HERO */}
+      <section className="pt-24 min-h-screen bg-[#020617] flex items-center relative overflow-hidden">
+        {/* Background Pattern - Modernized */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={imgPessoa} alt="Onda Finance Background" className="absolute inset-0 w-full h-full object-cover opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/80 via-[#020617]/40 to-[#020617]" />
+          <div className="absolute inset-0 opacity-[0.12]" style={{
+            backgroundImage: `radial-gradient(#4f46e5 0.5px, transparent 0.5px)`,
+            backgroundSize: '24px 24px'
+          }} />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] -translate-y-1/2" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          {/* texto */}
+          <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2">
+              <Zap className="w-4 h-4 text-indigo-400 fill-indigo-400/20" />
+              <span className="text-indigo-200 text-xs font-semibold tracking-wide uppercase">Conta Digital Premium</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+              Seu dinheiro,<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-indigo-400 bg-[length:200%_auto] animate-gradient">
+                no seu ritmo.
+              </span>
+            </h1>
+            <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0">
+              A conta digital que evolui com você. Rendimento automático, segurança bancária e controle total na palma da mão.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button
+                onClick={() => navigate('/login')}
+                className="bg-indigo-600 hover:bg-indigo-500 text-white h-14 px-10 rounded-2xl text-lg font-bold shadow-xl shadow-indigo-600/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center gap-3 group"
+              >
+                Começar agora
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                variant="outline"
+                className="border-slate-800 text-slate-300 hover:bg-slate-800/50 hover:text-white h-14 px-10 rounded-2xl text-lg font-semibold bg-transparent transition-all"
+              >
+                Conhecer planos
+              </Button>
+            </div>
+            <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">
+              <div className="flex -space-x-3">
+                {[1,2,3,4].map((i) => (
+                  <div key={i} className="w-10 h-10 rounded-full bg-slate-800 border-2 border-[#020617] flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-blue-600 opacity-80" />
+                  </div>
+                ))}
+              </div>
+              <div className="text-left">
+                <div className="flex items-center gap-1">
+                  {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />)}
+                </div>
+                <p className="text-slate-500 text-xs mt-0.5">
+                  <span className="text-white font-bold">+2M de usuários</span> satisfeitos
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* mockup de app */}
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative group">
+              {/* glow effect */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-600 to-blue-600 rounded-[4rem] blur-2xl opacity-20 group-hover:opacity-30 transition-opacity" />
+              
+              {/* phone chassis */}
+              <div 
+                onClick={() => navigate('/login')}
+                className="relative w-64 md:w-72 h-[560px] md:h-[620px] bg-slate-800 rounded-[3.5rem] p-2 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-slate-700/50 cursor-pointer group/phone hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(79,70,229,0.3)] transition-all duration-500"
+              >
+                {/* Hardware buttons */}
+                <div className="absolute top-28 -left-[2px] w-[2px] h-6 bg-slate-600 rounded-l-sm" /> {/* Mute */}
+                <div className="absolute top-40 -left-[2px] w-[2px] h-12 bg-slate-600 rounded-l-sm" /> {/* Vol+ */}
+                <div className="absolute top-56 -left-[2px] w-[2px] h-12 bg-slate-600 rounded-l-sm" /> {/* Vol- */}
+                <div className="absolute top-44 -right-[2px] w-[2px] h-16 bg-slate-600 rounded-r-sm" /> {/* Power */}
+
+                {/* Inner screen frame */}
+                <div className="bg-[#020617] rounded-[3rem] h-full overflow-hidden relative border-[6px] border-black">
+                  
+                  {/* Glass glare effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 pointer-events-none z-30 group-hover/phone:opacity-50 transition-opacity" />
+                  
+                  {/* Dynamic Island */}
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-40 flex items-center justify-between px-2 shadow-[inset_0_-1px_2px_rgba(255,255,255,0.1)]">
+                    <div className="w-2 h-2 rounded-full bg-[#111] border border-white/10 shadow-inner" /> {/* Camera */}
+                    <div className="w-1 h-1 rounded-full bg-blue-500 shadow-[0_0_4px_#3b82f6]" /> {/* Sensor indicator */}
+                  </div>
+
+                  {/* Status Bar */}
+                  <div className="absolute top-3 left-6 right-6 flex justify-between items-center z-30 pointer-events-none opacity-90">
+                    <span className="text-white text-[10px] font-medium tracking-tighter">9:41</span>
+                    <div className="flex gap-1.5 items-center">
+                      {/* Signal */}
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M2 22h20V2L2 22z"/></svg>
+                      {/* Wifi */}
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7 3 2.7 5.1 0 8l12 15L24 8C21.3 5.1 17 3 12 3z"/></svg>
+                      {/* Battery */}
+                      <div className="w-[18px] h-2.5 border border-white rounded-[3px] p-px flex items-center relative">
+                        <div className="w-[80%] h-full bg-white rounded-[1px]" />
+                        <div className="absolute -right-[2px] w-[2px] h-1 bg-white rounded-r-[1px]" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* internal app content */}
+                  <div className="p-6 pt-16 space-y-6 relative z-20">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-slate-500 text-xs">Saldo total</p>
+                        <h4 className="text-white text-2xl font-bold mt-1">R$ 12.450,80</h4>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-indigo-600/20 flex items-center justify-center">
+                        <Waves className="w-5 h-5 text-indigo-400" />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-slate-900/50 rounded-2xl p-4 border border-slate-800/50">
+                        <TrendingUp className="w-5 h-5 text-emerald-400 mb-2" />
+                        <p className="text-white font-bold text-sm">+12.4%</p>
+                        <p className="text-slate-500 text-[10px]">Rendimento</p>
+                      </div>
+                      <div className="bg-slate-900/50 rounded-2xl p-4 border border-slate-800/50">
+                        <Shield className="w-5 h-5 text-blue-400 mb-2" />
+                        <p className="text-white font-bold text-sm">Ativo</p>
+                        <p className="text-slate-500 text-[10px]">Seguro</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Atividade</p>
+                      {[
+                        { label: 'Netflix', time: 'Há 2h', val: '-19.90', icon: 'N' },
+                        { label: 'Apple Pay', time: 'Ontem', val: '-1.200,00', icon: 'A' },
+                        { label: 'Pix Recebido', time: 'Ontem', val: '+450,00', icon: 'P', color: 'text-emerald-400' },
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center justify-between group/item">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-slate-400 font-bold border border-slate-800">
+                              {item.icon}
+                            </div>
+                            <div>
+                              <p className="text-white text-sm font-medium">{item.label}</p>
+                              <p className="text-slate-500 text-[10px]">{item.time}</p>
+                            </div>
+                          </div>
+                          <span className={`text-sm font-bold ${item.color || 'text-white'}`}>{item.val}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ACESSO RÁPIDO */}
+      <section className="py-20 bg-white relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="space-y-3">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Serviços essenciais</h2>
+              <p className="text-slate-500 text-lg">Tudo para sua vida financeira fluir melhor.</p>
+            </div>
+            <div className="flex gap-2">
+              <div className="w-2 h-2 rounded-full bg-indigo-600" />
+              <div className="w-2 h-2 rounded-full bg-indigo-200" />
+              <div className="w-2 h-2 rounded-full bg-indigo-200" />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: CreditCard, title: 'Cartões', desc: 'Virtual e físico com cashback', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: TrendingUp, title: 'Investimentos', desc: 'Sua reserva rendendo mais', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: Receipt, title: 'Pagamentos', desc: 'Boletos e contas sem filas', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: Shield, title: 'Seguros', desc: 'Proteção para você e família', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+            ].map(({ icon: Icon, title, desc, color, bg }) => (
+              <div key={title} className="p-8 rounded-[2rem] border border-slate-200 shadow-sm bg-white hover:bg-slate-50/50 cursor-pointer transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-200 group">
+                <div className={`w-14 h-14 rounded-2xl ${bg} ${color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all`}>
+                  <Icon className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{title}</h3>
+                <p className="text-slate-500 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EMPRÉSTIMO */}
+      <section className="py-24 bg-slate-50/50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 rounded-full px-4 py-2 text-sm font-bold tracking-wide uppercase">
+                <TrendingUp className="w-4 h-4" />
+                Crédito Inteligente
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+                Empréstimo que se adapta ao seu momento.
+              </h2>
+              <p className="text-xl text-slate-500 leading-relaxed">
+                Taxas a partir de 1,79% ao mês. Sem burocracia, sem letras miúdas. Aprovado em minutos.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  'Taxas competitivas',
+                  'Até 48x para pagar',
+                  'Carência de 60 dias',
+                  '100% Digital'
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+                    <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-slate-700 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Button className="bg-indigo-600 hover:bg-black text-white h-14 px-10 rounded-2xl font-bold shadow-xl shadow-indigo-200 transition-all hover:scale-[1.02]">
+                Simular Agora
+              </Button>
+            </div>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-indigo-500/10 rounded-[2.5rem] blur-2xl group-hover:bg-indigo-500/20 transition-all" />
+              <div className="relative rounded-[2rem] w-full h-[450px] overflow-hidden shadow-2xl border-4 border-white">
+                <img src={imgPagandoCartao} alt="Pessoa pagando com cartão" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10 flex flex-col items-center gap-6">
+                  <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30">
+                    <p className="text-white text-xs font-bold uppercase tracking-widest">Toque para interagir</p>
+                  </div>
+                  <FlipCard />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHATSAPP */}
+      <section className="py-24 bg-slate-900 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-[100px]" />
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <div className="flex justify-center mb-8">
+            <div className="w-20 h-20 bg-emerald-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/20 rotate-12">
+              <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </div>
+          </div>
+          <h2 className="text-4xl font-extrabold text-white mb-6">
+            Resolvemos tudo pelo WhatsApp
+          </h2>
+          <p className="text-slate-400 text-xl mb-10 max-w-2xl mx-auto">
+            Atendimento humano, rápido e eficiente. Sem filas de espera e sem menus infinitos.
+          </p>
+          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white h-16 px-12 rounded-[2rem] font-bold text-lg flex items-center gap-3 mx-auto shadow-2xl shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95">
+            Começar Atendimento
+          </Button>
+        </div>
+      </section>
+
+      {/* STATS - Integrated */}
+      <section id="stats" className="py-24 bg-[#020617] relative border-y border-slate-800/50">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-600/5 to-transparent shadow-inner" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+            {stats.map((s) => (
+              <div key={s.label} className="text-center space-y-3 group">
+                <span className="block text-5xl md:text-6xl font-extrabold text-white tracking-tighter group-hover:scale-110 transition-transform duration-500">{s.value}</span>
+                <span className="block text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section id="features" className="py-32 bg-white relative z-10">
+        {/* Modern section divider */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#020617] to-white -translate-y-[1px]" />
+        <div className="absolute top-0 left-0 right-0 h-32 bg-white rounded-t-[4rem] -translate-y-full" />
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="space-y-4">
+              <p className="text-indigo-600 text-sm font-bold uppercase tracking-[0.2em]">Funcionalidades</p>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+                Controle total para você<br />chegar mais longe.
+              </h2>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map(({ icon: Icon, title, desc }) => (
+              <div key={title} className="bg-white rounded-[2.5rem] p-8 border border-slate-200 shadow-sm hover:border-indigo-200 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all group">
+                <div className="w-14 h-14 rounded-2xl bg-white shadow-sm group-hover:bg-indigo-600 flex items-center justify-center mb-6 transition-colors">
+                  <Icon className="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
+                <p className="text-slate-500 leading-relaxed">{desc}</p>
+                <div className="flex items-center gap-1 mt-6 text-indigo-600 text-sm font-bold opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                  Ver detalhes <ChevronRight className="w-4 h-4" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="py-32 bg-[#020617] relative overflow-hidden min-h-[50vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img src={imgBancoDigital} alt="Banco Digital" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/60 to-[#020617]" />
+        </div>
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-8">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">Pronto para transformar sua<br />vida financeira?</h2>
+          <p className="text-indigo-100 text-xl max-w-xl mx-auto leading-relaxed">Abra sua conta em menos de 5 minutos. Sem taxas, sem burocracia e com todo o suporte que você merece.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button
+              onClick={() => navigate('/login')}
+              className="bg-white text-indigo-600 hover:bg-slate-100 h-16 px-12 rounded-2xl font-bold text-lg shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center gap-3 group"
+            >
+              Criar Conta Grátis
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 pt-6 border-t border-white/10">
+            {['Anuidade Zero', 'Rendimento CDI', 'Suporte 24/7'].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-indigo-100 font-medium">
+                <CheckCircle2 className="w-5 h-5 text-indigo-300" />
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* TESTIMONIALS */}
+      <section id="testimonials" className="py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center space-y-4 mb-16">
+            <p className="text-indigo-600 text-sm font-bold uppercase tracking-[0.2em]">Depoimentos</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">O que dizem sobre nós</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md hover:shadow-2xl hover:border-indigo-100 transition-all group flex flex-col justify-between">
+                <div className="space-y-6">
+                  <div className="flex gap-1">
+                    {Array.from({ length: t.stars }).map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 text-lg leading-relaxed italic">"{t.text}"</p>
+                </div>
+                <div className="flex items-center gap-4 pt-8 border-t border-slate-50 mt-8">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-indigo-200">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900">{t.name}</p>
+                    <p className="text-sm text-slate-500">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-slate-900 text-slate-400 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-10 mb-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                  <Waves className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-bold text-white">Onda Finance</span>
+              </div>
+              <p className="text-sm leading-relaxed">Conta digital completa para quem quer mais controle e menos burocracia.</p>
+              <div className="flex gap-3 pt-2">
+                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 cursor-pointer transition-colors">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </div>
+                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 cursor-pointer transition-colors">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                  </svg>
+                </div>
+                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 cursor-pointer transition-colors">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            {[
+              { title: 'Produtos', links: ['Conta digital', 'Cartão de crédito', 'Empréstimos', 'Investimentos'] },
+              { title: 'Atendimento', links: ['Central de Ajuda', 'WhatsApp', 'Chat Online', 'Ouvidoria'] },
+              { title: 'Institucional', links: ['Sobre nós', 'Carreiras', 'Imprensa', 'Segurança'] },
+            ].map((col) => (
+              <div key={col.title} className="space-y-6">
+                <h4 className="text-white font-bold text-sm uppercase tracking-widest">{col.title}</h4>
+                <ul className="space-y-4">
+                  {col.links.map((l) => (
+                    <li key={l}><a href="#" className="text-sm hover:text-indigo-400 transition-colors">{l}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-slate-800 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-xs">© 2025 Onda Finance. Todos os direitos reservados.</p>
+              <div className="flex gap-6 text-xs">
+                <a href="#" className="hover:text-white transition-colors">Privacidade</a>
+                <a href="#" className="hover:text-white transition-colors">Termos</a>
+                <a href="#" className="hover:text-white transition-colors">Segurança</a>
+              </div>
+              <p className="text-xs">Desafio técnico — Onda Finance × JobZ Talentos</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
