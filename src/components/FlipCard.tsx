@@ -1,8 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Waves } from 'lucide-react'
 
 export default function FlipCard() {
   const [flipped, setFlipped] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    // Return a placeholder during SSR
+    return (
+      <div className="w-80 h-48 rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 p-6 shadow-2xl flex items-center justify-center">
+        <div className="text-white text-center">
+          <Waves className="w-8 h-8 mx-auto mb-2" />
+          <p className="text-sm font-semibold">Onda Finance</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div

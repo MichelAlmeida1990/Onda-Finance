@@ -1,8 +1,16 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Waves } from 'lucide-react';
 export default function FlipCard() {
     const [flipped, setFlipped] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+    if (!isClient) {
+        // Return a placeholder during SSR
+        return (_jsx("div", { className: "w-80 h-48 rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 p-6 shadow-2xl flex items-center justify-center", children: _jsxs("div", { className: "text-white text-center", children: [_jsx(Waves, { className: "w-8 h-8 mx-auto mb-2" }), _jsx("p", { className: "text-sm font-semibold", children: "Onda Finance" })] }) }));
+    }
     return (_jsx("div", { className: "w-80 h-48 cursor-pointer group", style: { perspective: '1000px' }, onMouseEnter: () => setFlipped(true), onMouseLeave: () => setFlipped(false), children: _jsxs("div", { style: {
                 width: '100%',
                 height: '100%',
