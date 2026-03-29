@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Eye, EyeOff, ArrowRight, Waves } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -21,6 +21,11 @@ export default function LoginPage() {
   const navigate = useNavigate()
   const login = useAuthStore((s) => s.login)
   const [showPassword, setShowPassword] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const {
     register,
@@ -41,8 +46,14 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Painel esquerdo — hero */}
-      <div className="hidden lg:flex lg:w-1/2 relative bg-[#020617] flex-col justify-between p-12 overflow-hidden">
+      {!isClient ? (
+        <div className="flex items-center justify-center w-full">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </div>
+      ) : (
+        <>
+        {/* Painel esquerdo — hero */}
+        <div className="hidden lg:flex lg:w-1/2 relative bg-[#020617] flex-col justify-between p-12 overflow-hidden">
         {/* Background Decorativo e Mesh Gradient Moderno */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-[#020617]" />
@@ -212,6 +223,8 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+        </>
+      )}
     </div>
   )
 }
