@@ -41,7 +41,7 @@ export default function LoginPage() {
       return
     }
     login({ name: MOCK_USER.name, email: MOCK_USER.email })
-    navigate('/dashboard')
+    window.location.href = '/dashboard'
   }
 
   return (
