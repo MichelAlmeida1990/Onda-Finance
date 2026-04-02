@@ -12,25 +12,25 @@ import imgPessoa from '@/assets/pexels-photo-6969809.webp'
 import imgPagandoCartao from '@/assets/side-view-adult-paying-with-card_23-2150347020.avif'
 
 const features = [
-  { icon: Send, title: 'Pix Instantâneo', desc: 'Envie e receba dinheiro em segundos, qualquer dia e horário.' },
-  { icon: BarChart3, title: 'Extrato inteligente', desc: 'Visualize todas as suas movimentações com categorias automáticas.' },
-  { icon: Shield, title: 'Segurança total', desc: 'Criptografia de ponta a ponta e autenticação em dois fatores.' },
-  { icon: PiggyBank, title: 'Rendimento diário', desc: 'Seu saldo rende automaticamente todo dia, sem precisar investir.' },
-  { icon: CreditCard, title: 'Cartão virtual', desc: 'Gere cartões virtuais para compras online com limite personalizado.' },
-  { icon: Receipt, title: 'Pagamentos', desc: 'Pague boletos, contas e recargas direto pelo app, 24h por dia.' },
+  { icon: Send, title: 'Transferências Globais', desc: 'Envie dinheiro para qualquer país com cripto ou moedas fiduciárias em minutos.' },
+  { icon: TrendingUp, title: 'Crypto Wallet', desc: 'Compre, venda e guarde Bitcoin, Ethereum e 100+ criptomoedas.' },
+  { icon: Shield, title: 'Segurança Total', desc: 'Criptografia de ponta a ponta e proteção contra fraudes em transações globais.' },
+  { icon: Receipt, title: 'Câmbio Inteligente', desc: 'Conversão instantânea entre 50+ moedas com as melhores taxas do mercado.' },
+  { icon: CreditCard, title: 'Cartão Global', desc: 'Cartão multi-moeda para compras internacionais sem taxas escondidas.' },
+  { icon: BarChart3, title: 'Analytics Global', desc: 'Acompanhe suas transações em múltiplas moedas em tempo real.' },
 ]
 
 const stats = [
-  { value: '2M+', label: 'Clientes ativos' },
-  { value: 'R$ 4bi', label: 'Transacionados' },
-  { value: '4.9★', label: 'Avaliação no app' },
-  { value: '24/7', label: 'Suporte disponível' },
+  { value: '180+', label: 'Países atendidos' },
+  { value: '$2.5B', label: 'Transacionados globalmente' },
+  { value: '150+', label: 'Moedas suportadas' },
+  { value: '24/7', label: 'Suporte global' },
 ]
 
 const testimonials = [
-  { name: 'Ana Lima', role: 'Freelancer', text: 'Finalmente um banco que entende minha rotina. Transferências instantâneas e sem burocracia.', stars: 5 },
-  { name: 'Carlos Mendes', role: 'Empreendedor', text: 'O extrato inteligente me ajudou a entender onde eu gastava dinheiro sem perceber.', stars: 5 },
-  { name: 'Juliana Costa', role: 'CLT', text: 'Meu salário cai e já rende no mesmo dia. Nunca mais deixei dinheiro parado.', stars: 5 },
+  { name: 'Sarah Chen', role: 'Digital Nomad', text: 'Envio dinheiro da China para o Brasil em minutos. As taxas de câmbio são as melhores do mercado!', stars: 5 },
+  { name: 'Marco Silva', role: 'Importador', text: 'A crypto wallet me permite pagar fornecedores em qualquer lugar do mundo sem complicações.', stars: 5 },
+  { name: 'Emma Wilson', role: 'Freelancer', text: 'Recebo pagamentos em 5 moedas diferentes. Tudo em um só app, sem taxas escondidas.', stars: 5 },
 ]
 
 export default function LandingPage() {
@@ -106,18 +106,18 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center relative z-10">
           {/* texto */}
           <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2">
+            <div className="inline-flex items-center gap-3 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-6 py-3 backdrop-blur-sm">
               <Zap className="w-4 h-4 text-indigo-400 fill-indigo-400/20" />
-              <span className="text-indigo-200 text-xs font-semibold tracking-wide uppercase">Conta Digital Premium</span>
+              <span className="text-indigo-200 text-xs font-semibold tracking-wide uppercase">Pagamentos Globais</span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
-              Seu dinheiro,<br />
+              Dinheiro sem<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-indigo-400 bg-[length:200%_auto] animate-gradient">
-                no seu ritmo.
+                fronteiras.
               </span>
             </h1>
             <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0">
-              A conta digital que evolui com você. Rendimento automático, segurança bancária e controle total na palma da mão.
+              Transferências globais com cripto e moedas fiduciárias. As melhores taxas, segurança máxima e alcance em 180+ países.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
@@ -259,8 +259,8 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="space-y-3">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Serviços essenciais</h2>
-              <p className="text-slate-500 text-lg">Tudo para sua vida financeira fluir melhor.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Serviços Globais</h2>
+              <p className="text-slate-500 text-lg">Seu dinheiro em qualquer lugar do mundo.</p>
             </div>
             <div className="flex gap-2">
               <div className="w-2 h-2 rounded-full bg-indigo-600" />
@@ -270,10 +270,10 @@ export default function LandingPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: CreditCard, title: 'Cartões', desc: 'Virtual e físico com cashback', color: 'text-indigo-600', bg: 'bg-indigo-50' },
-              { icon: TrendingUp, title: 'Investimentos', desc: 'Sua reserva rendendo mais', color: 'text-indigo-600', bg: 'bg-indigo-50' },
-              { icon: Receipt, title: 'Pagamentos', desc: 'Boletos e contas sem filas', color: 'text-indigo-600', bg: 'bg-indigo-50' },
-              { icon: Shield, title: 'Seguros', desc: 'Proteção para você e família', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: Send, title: 'Envio Global', desc: '180+ países atendidos', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: TrendingUp, title: 'Crypto Wallet', desc: '100+ criptomoedas', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: Receipt, title: 'Câmbio', desc: '50+ moedas fiduciárias', color: 'text-indigo-600', bg: 'bg-indigo-50' },
+              { icon: CreditCard, title: 'Cartão Multi', desc: 'Multi-moeda global', color: 'text-indigo-600', bg: 'bg-indigo-50' },
             ].map(({ icon: Icon, title, desc, color, bg }) => (
               <div key={title} className="p-8 rounded-[2rem] border border-slate-200 shadow-sm bg-white hover:bg-slate-50/50 cursor-pointer transition-all hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-200 group">
                 <div className={`w-14 h-14 rounded-2xl ${bg} ${color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all`}>

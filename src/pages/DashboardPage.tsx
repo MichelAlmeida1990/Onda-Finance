@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { 
   ArrowUpRight, ArrowDownLeft, LogOut, Send, 
   Bell, QrCode, ScanLine, Wallet, 
-  CreditCard, ChevronRight, BarChart3, Receipt, Eye, EyeOff
+  CreditCard, ChevronRight, BarChart3, Receipt, Eye, EyeOff, Globe, TrendingUp
 } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -96,13 +96,16 @@ export default function DashboardPage() {
               
               <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-white/10">
                 <Button 
+                  onClick={() => navigate('/global-transfer')}
+                  className="h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-2xl shadow-lg shadow-blue-600/30 font-bold text-base px-8 flex-1 md:flex-none transition-all active:scale-95 border border-blue-500/50"
+                >
+                  <Globe className="w-5 h-5 mr-3" /> Transferência Global
+                </Button>
+                <Button 
                   onClick={() => navigate('/transfer')}
                   className="h-14 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl shadow-lg shadow-indigo-600/30 font-bold text-base px-8 flex-1 md:flex-none transition-all active:scale-95 border border-indigo-500/50"
                 >
-                  <Send className="w-5 h-5 mr-3" /> Fazer Transferência
-                </Button>
-                <Button variant="outline" className="h-14 bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white rounded-2xl font-bold px-8 transition-all hidden sm:flex">
-                  Ver detalhes
+                  <Send className="w-5 h-5 mr-3" /> Transferência Local
                 </Button>
               </div>
             </div>
@@ -133,14 +136,15 @@ export default function DashboardPage() {
         </div>
 
         {/* QUICK ACTIONS ROW */}
-        <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
            {[
+             { icon: Globe, label: 'Global', color: 'text-cyan-400', bg: 'bg-white/5 hover:border-cyan-500/50 hover:bg-cyan-500/10', path: '/global-transfer' },
              { icon: QrCode, label: 'Área Pix', color: 'text-teal-400', bg: 'bg-white/5 hover:border-teal-500/50 hover:bg-teal-500/10', path: '/pix' },
              { icon: ScanLine, label: 'Pagar', color: 'text-blue-400', bg: 'bg-white/5 hover:border-blue-500/50 hover:bg-blue-500/10', path: '/pagar' },
              { icon: Send, label: 'Transferir', color: 'text-indigo-400', bg: 'bg-white/5 hover:border-indigo-500/50 hover:bg-indigo-500/10', path: '/transfer' },
+             { icon: TrendingUp, label: 'Crypto', color: 'text-purple-400', bg: 'bg-white/5 hover:border-purple-500/50 hover:bg-purple-500/10', path: '/crypto' },
              { icon: Wallet, label: 'Depositar', color: 'text-purple-400', bg: 'bg-white/5 hover:border-purple-500/50 hover:bg-purple-500/10', path: '/depositar' },
              { icon: CreditCard, label: 'Cartões', color: 'text-rose-400', bg: 'bg-white/5 hover:border-rose-500/50 hover:bg-rose-500/10', path: '/cartoes' },
-             { icon: Receipt, label: 'Cobrar', color: 'text-amber-400', bg: 'bg-white/5 hover:border-amber-500/50 hover:bg-amber-500/10', path: '/cobrar' },
              { icon: BarChart3, label: 'Investir', color: 'text-emerald-400', bg: 'bg-white/5 hover:border-emerald-500/50 hover:bg-emerald-500/10', path: '/investir' },
            ].map((action, i) => (
              <button key={i} onClick={() => navigate(action.path)} className="flex flex-col items-center gap-3 cursor-pointer group w-full">

@@ -4,6 +4,7 @@ import LandingPage from '@/pages/LandingPage'
 import LoginPage from '@/pages/LoginPage'
 import DashboardPage from '@/pages/DashboardPage'
 import TransferPage from '@/pages/TransferPage'
+import GlobalTransferPage from '@/pages/GlobalTransferPage'
 import PixPage from '@/pages/PixPage'
 import CardsPage from '@/pages/CardsPage'
 import PayPage from '@/pages/PayPage'
@@ -24,6 +25,7 @@ export default function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/transfer" element={<TransferPage />} />
+            <Route path="/global-transfer" element={<GlobalTransferPage />} />
             <Route path="/pix" element={<PixPage />} />
             <Route path="/cartoes" element={<CardsPage />} />
             <Route path="/pagar" element={<PayPage />} />

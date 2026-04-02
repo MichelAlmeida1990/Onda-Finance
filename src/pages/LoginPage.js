@@ -30,7 +30,7 @@ export default function LoginPage() {
             return;
         }
         login({ name: MOCK_USER.name, email: MOCK_USER.email });
-        navigate('/dashboard');
+        window.location.href = '/dashboard';
     };
     return (_jsx("div", { className: "min-h-screen flex", children: !isClient ? (_jsx("div", { className: "flex items-center justify-center w-full", children: _jsx("div", { className: "animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" }) })) : (_jsxs(_Fragment, { children: [_jsxs("div", { className: "hidden lg:flex lg:w-1/2 relative bg-[#020617] flex-col justify-between p-12 overflow-hidden", children: [_jsxs("div", { className: "absolute inset-0 z-0 overflow-hidden", children: [_jsx("div", { className: "absolute inset-0 bg-[#020617]" }), _jsx("div", { className: "absolute inset-0 opacity-[0.15]", style: {
                                         backgroundImage: `radial-gradient(#4f46e5 1px, transparent 1px)`,
